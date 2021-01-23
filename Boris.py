@@ -30,8 +30,11 @@ class Boris(Lifeform):
     def draw(self, gamewindow):
         super().draw(gamewindow)
         self.recoil()  # call the count down function to enable shooting again.
-        for vaccine in self.vaccinesShot:  # Draw all the vaccines.
-            vaccine.draw()
+        for vaccine in self.vaccinesShot:  # Draw all the vaccines that are in range, otherwise remove them.
+            if vaccine.y > 0:
+                vaccine.draw()
+            else:
+                self.vaccinesShot.remove(vaccine)
         pass
         # Draw self and all my vaccines
 
