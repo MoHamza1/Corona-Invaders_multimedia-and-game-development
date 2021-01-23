@@ -4,18 +4,15 @@ from Lifeform import *
 class Granny(Lifeform):
 
     def __init__(self, window_width=750, window_height=750):
-        self.x = 10
-        self.y = window_height - 50
         self.window_width = window_width
         self.direction = "right"
         self.vel = 1
-
         self.img = {
             "right": pygame.image.load(os.path.join("Assets", f"granny_right.png")),
             "left": pygame.image.load(os.path.join("Assets", f"granny_left.png"))
         }
 
-        super().__init__(self.x, self.y, self.img[self.direction])
+        super().__init__(10, window_height - 50, self.img[self.direction],1 )
 
     def walk(self):
 
@@ -29,3 +26,11 @@ class Granny(Lifeform):
             self.direction = "right"
             self.vel = self.vel * (-1)
             super().icon = self.img[self.direction]
+
+    def status_bar(self,gamewindow):
+        pass
+        # obvious
+
+    def draw(self, gamewindow):
+        super().draw(gamewindow)        # Draw the granny
+        self.status_bar(gamewindow)     # Draw her health
