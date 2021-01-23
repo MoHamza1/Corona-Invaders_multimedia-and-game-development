@@ -1,27 +1,29 @@
-import Boris
-import Bat
-import Granny
-import Projectile
-import Lifeform
+from Boris import *
+from Bat import *
+from Granny import *
+from Projectile import *
+from Lifeform import *
 import pygame
 import os
 
+FPS = 60
+clock = pygame.time.Clock()
 
 window_width, window_height = 750, 750
 gameWindow = pygame.display.set_mode((window_width, window_height))
-background = pygame.transform.scale(pygame.image.load(os.path.join("Assets", "background.png")), (window_width, window_height))
+background = pygame.transform.scale(pygame.image.load(os.path.join("Assets", "background.png")),
+                                    (window_width, window_height))
 
+############################# ASSETS #############################
 flying_bat = [
     pygame.image.load(os.path.join("Assets/Flying_Bat", f"flying_bat_{x + 1}.png")) for x in range(5)
 ]
 dead_bat = [
     pygame.image.load(os.path.join("Assets/Dead_Bat", f"DEAD_{x + 1}.png")) for x in range(5)
 ]
-
 life = pygame.image.load(os.path.join("Assets", "life.png"))
 crate = pygame.image.load(os.path.join("Assets", "crate.png"))
 vaccine = pygame.image.load(os.path.join("Assets", "vaccine.png"))
-
 viruses = [
     pygame.image.load(os.path.join("Assets", f"virus_{x}.png")) for x in ['blue', 'green', 'red']
 ]
@@ -29,8 +31,10 @@ viruses = [
 main_font = pygame.font.SysFont("comicsans", 50)
 lost_font = pygame.font.SysFont("comicsans", 60)
 
-def redraw_window(gameState):
 
+###################################################################
+
+def update(gameState):
     gameWindow.blit(background, (0, 0))
     lives_label = main_font.render(f"{gameState['lives']}", 1, (255, 255, 255))
     vaccine_label = main_font.render(f"{gameState['vaccine_count']}", 1, (255, 255, 255))
@@ -60,11 +64,41 @@ def redraw_window(gameState):
     pygame.display.update()
 
 
-
 def main():
-    print("hello wrld")
+    gameState = {
+        "lost": False,
+        "bats": [],
+        "powerups": [],
+        "healthUps": [],
+        "bojo": Boris(300, 630),
+        "gran": Granny()
+    }
+
+    while True:
+        clock.tick(FPS)
+        update(gameState)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                quit()
+            if event.type == pygame.MOUSEBUTTONUP:
+                gameState["bojo"].shootVaccine()
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_SPACE]:
+            gameState["bojo"].shootVaccine()
+
+
+#     TODO: Check collisions between bojo's vaccines and bats,
+#     TODO: Ask the bats if they or their coronas have hit granny or bojo
+#     TODO: Tell granny to move
+#     TODO: Tell the bats to move
+#     TODO: sync mouse with bojo
+#     TODO: implement main menu with the back story and control info.
+#     TODO: countdown timer; pre return to main menu.
+#     TODO: Add audio elements when getting infected; or killing a bat.
+
+
 
 if __name__ == '__main__':
     main()
-
-
