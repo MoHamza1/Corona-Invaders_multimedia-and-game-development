@@ -1,5 +1,12 @@
 from Lifeform import *
 
+"""
+        Usage!
+
+        1. instantiate granny
+        2. call walk to make her walk, she figures it out on her own.
+        3. call draw to bring her into existance.
+"""
 
 class Granny(Lifeform):
 

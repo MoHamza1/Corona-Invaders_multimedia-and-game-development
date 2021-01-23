@@ -1,6 +1,23 @@
 from Lifeform import *
 from Projectile import *
 
+"""
+        Usage!
+        
+        1. pass the array of OS loaded pygame image objects,
+        
+        2. decide which virus, and git it in the same format as 1
+        
+        
+        3.  Dead Checklist:
+        
+            Update the animation array when dead,
+            set the frame and frame counter to 0;
+            Alive state will be set to dead when boris detects one of his vaccines has collided.
+            only pop it from the array once the animation frame == 4 && alive == False
+            
+        4. Check for collisions; call Bat_or_virus_collison on granny and boris, returns true if there is.
+"""
 
 class Bat(Lifeform):
 
@@ -14,7 +31,7 @@ class Bat(Lifeform):
         self.shotViruses = []
         self.alive = True
         self.locked_and_loaded = 0
-        self.vel = 1
+        self.vel = 1 # positive because it is pointing downwards.
 
     def draw(self, gamewindow):
         if self.animationCounter == 0:
@@ -35,6 +52,8 @@ class Bat(Lifeform):
             self.locked_and_loaded = not self.locked_and_loaded
 
     def lock_and_load(self):
+        # To prevent bat from shooting multiple virusses at a time.
+        # THIS MAY BE REDUNDANT!!
         self.locked_and_loaded = 0 if self.locked_and_loaded > 30 else (self.locked_and_loaded + 1)
 
     def Bat_or_virus_collison(self, target):
@@ -47,10 +66,11 @@ class Bat(Lifeform):
 
     def move(self):
         # We move the bat first
-        super().move(1, self.vel)
+        super().move(1, self.vel) # direction = 1 because it is pointing downwards.
 
         # And move all the virusses shot too
         for virus in self.shotViruses:
             virus.move()
             if virus.despawn():
                 self.shotViruses.remove(virus)
+        self.lock_and_load()

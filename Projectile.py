@@ -2,7 +2,7 @@ import pygame
 
 
 class Projectile:
-    def __init__(self, x, y, icon,speed, window_height=750):
+    def __init__(self, x, y, icon, speed, window_height=750):
         self.x = x
         self.y = y
         self.mask = pygame.mask.from_surface(icon)  # For pygame's native collision detection
