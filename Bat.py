@@ -17,9 +17,11 @@ from Projectile import *
 
 class Bat(Lifeform):
 
-    def __init__(self, x, y, bat_animation, virusStrain):
+    def __init__(self, x, y, virusStrain):
 
-        self.animation = bat_animation
+        self.animation = [
+    pygame.image.load(os.path.join("Assets/Flying_Bat", f"flying_bat_{x + 1}.png")) for x in range(5)
+]
         self.frame = 0
         self.animationCounter = 0
         self.virusStrain = virusStrain
@@ -50,15 +52,16 @@ class Bat(Lifeform):
     def lock_and_load(self):
         # To prevent bat from shooting multiple virusses at a time.
         # THIS MAY BE REDUNDANT!!
-        self.locked_and_loaded = 0 if self.locked_and_loaded > 30 else (self.locked_and_loaded + 1)
+        self.locked_and_loaded = 0 if self.locked_and_loaded > 20 else (self.locked_and_loaded + 1)
 
     def Bat_or_virus_collison(self, target):
         # we check if any of our viruses hit a target;
         for virus in self.shotViruses:
             if virus.collided(target):
-                return True
+                self.shotViruses.remove(virus)
+                return 1
         # we check this bat hit a target in case none of the virusses did.
-        return True if self.mask.overlap(target.mask, ((target.x - self.x), (target.y - self.y))) else False
+        return 2 if self.mask.overlap(target.mask, ((target.x - self.x), (target.y - self.y))) else 0
 
     def despawn(self):
         if self.y > 750:
@@ -79,8 +82,8 @@ class Bat(Lifeform):
             super().move(1, self.vel)  # direction = 1 because it is pointing downwards.
 
             # And move all the virusses shot too
-            for virus in self.shotViruses:
-                virus.move()
-                if virus.despawn():
-                    self.shotViruses.remove(virus)
-            self.lock_and_load()
+        for virus in self.shotViruses:
+            virus.move()
+            if virus.despawn():
+                self.shotViruses.remove(virus)
+        self.lock_and_load()

@@ -52,11 +52,14 @@ class Boris(Lifeform):
         for vaccine in self.vaccinesShot:
             for bat in temp:
                 if vaccine.collided(bat) and bat.alive:
-                    self.vaccinesShot.remove(vaccine)
-                    bat.die()
+                    try:
+                        self.vaccinesShot.remove(vaccine)
+                        bat.die()
+                    except:
+                        pass
         return temp
 
 
     def recoil(self):
         # To prevent the user from accidentally shooting too many vaccines
-        self.canShoot = 0 if self.canShoot > 20 else (self.canShoot + 2)
+        self.canShoot = 0 if self.canShoot > 15 else (self.canShoot + 2)
