@@ -4,11 +4,6 @@ from Projectile import *
 """
         Usage!
         
-        1. pass the array of OS loaded pygame image objects,
-        
-        2. decide which virus, and git it in the same format as 1
-        
-        
         3.  Dead Checklist:
         
             Update the animation array when dead,
@@ -18,6 +13,7 @@ from Projectile import *
             
         4. Check for collisions; call Bat_or_virus_collison on granny and boris, returns true if there is.
 """
+
 
 class Bat(Lifeform):
 
@@ -31,7 +27,7 @@ class Bat(Lifeform):
         self.shotViruses = []
         self.alive = True
         self.locked_and_loaded = 0
-        self.vel = 1 # positive because it is pointing downwards.
+        self.vel = 1  # positive because it is pointing downwards.
 
     def draw(self, gamewindow):
         if self.animationCounter == 0:
@@ -40,7 +36,7 @@ class Bat(Lifeform):
         else:
             self.animationCounter -= 1
 
-        super().icon = self.animation[self.frame]
+        self.icon = self.animation[self.frame]
         super().draw(gamewindow)
 
         for virus in self.shotViruses:
@@ -64,13 +60,27 @@ class Bat(Lifeform):
         # we check this bat hit a target in case none of the virusses did.
         return True if self.mask.overlap(target.mask, ((target.x - self.x), (target.y - self.y))) else False
 
-    def move(self):
-        # We move the bat first
-        super().move(1, self.vel) # direction = 1 because it is pointing downwards.
+    def despawn(self):
+        if self.y > 750:
+            print("pop!")
+        return True if self.y > 750 else False
 
-        # And move all the virusses shot too
-        for virus in self.shotViruses:
-            virus.move()
-            if virus.despawn():
-                self.shotViruses.remove(virus)
-        self.lock_and_load()
+    def die(self):
+        if self.alive:
+            self.animationCounter = 0
+            self.animation = [pygame.image.load(os.path.join("Assets/Dead_Bat", f"DEAD_{x + 1}.png")) for x in range(5)]
+            self.frame = 0
+            self.alive = False
+
+    def move(self):
+
+        if self.alive:
+            # We move the bat first
+            super().move(1, self.vel)  # direction = 1 because it is pointing downwards.
+
+            # And move all the virusses shot too
+            for virus in self.shotViruses:
+                virus.move()
+                if virus.despawn():
+                    self.shotViruses.remove(virus)
+            self.lock_and_load()

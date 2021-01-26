@@ -23,16 +23,18 @@ class Boris(Lifeform):
     def shootVaccine(self):
         # Create instance of Projectile with vaccine icon and vel -5 to point upwards.
 
-        if not self.canShoot:
+        if not self.canShoot and self.vaccine_count > 0:
+            self.vaccine_count -=1
             self.vaccinesShot.append(
                 Projectile(self.x, self.y, pygame.image.load(os.path.join("Assets", "vaccine.png")), -5))
 
     def draw(self, gamewindow):
         super().draw(gamewindow)
         self.recoil()  # call the count down function to enable shooting again.
+        self.status_bar(gamewindow)
         for vaccine in self.vaccinesShot:  # Draw all the vaccines that are in range, otherwise remove them.
             if vaccine.y > 0:
-                vaccine.draw()
+                vaccine.draw(gamewindow)
             else:
                 self.vaccinesShot.remove(vaccine)
         pass
@@ -41,18 +43,20 @@ class Boris(Lifeform):
     def move_vaccines(self):
         for vaccine in self.vaccinesShot:
             vaccine.move()
+            if vaccine.despawn():
+                self.vaccinesShot.remove(vaccine)
+
 
     def vaccinated(self, bats):
         temp = bats
         for vaccine in self.vaccinesShot:
             for bat in temp:
-                if vaccine.collided(bat):
-                    bat.alive = False
+                if vaccine.collided(bat) and bat.alive:
+                    self.vaccinesShot.remove(vaccine)
+                    bat.die()
         return temp
 
-    def status_bar(self):
-        pass
 
     def recoil(self):
         # To prevent the user from accidentally shooting too many vaccines
-        self.canShoot = 0 if self.canShoot > 30 else (self.canShoot + 1)
+        self.canShoot = 0 if self.canShoot > 20 else (self.canShoot + 2)

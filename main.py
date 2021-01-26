@@ -5,14 +5,16 @@ from Projectile import *
 from Lifeform import *
 import pygame
 import os
+import random
 
 FPS = 60
 clock = pygame.time.Clock()
-
+pygame.font.init()
 window_width, window_height = 750, 750
 gameWindow = pygame.display.set_mode((window_width, window_height))
 background = pygame.transform.scale(pygame.image.load(os.path.join("Assets", "background.png")),
                                     (window_width, window_height))
+pygame.mouse.set_visible(False)
 
 ############################# ASSETS #############################
 flying_bat = [
@@ -37,7 +39,7 @@ lost_font = pygame.font.SysFont("comicsans", 60)
 def update(gameState):
     gameWindow.blit(background, (0, 0))
     lives_label = main_font.render(f"{gameState['lives']}", 1, (255, 255, 255))
-    vaccine_label = main_font.render(f"{gameState['vaccine_count']}", 1, (255, 255, 255))
+    vaccine_label = main_font.render(f"{gameState['bojo'].vaccine_count}", 1, (255, 255, 255))
     level_label = main_font.render(f"Level: {gameState['level']}", 1, (255, 255, 255))
 
     gameWindow.blit(life, (10, 10))
@@ -52,10 +54,14 @@ def update(gameState):
     for healthUp in gameState['healthUps']:
         healthUp.draw(gameWindow)
 
-    for enemy in gameState['enemies']:
-        enemy.draw(gameWindow)
+    for bat in gameState['bats']:
+        bat.draw(gameWindow)
+        if bat.despawn() or (not bat.alive and bat.frame == 4):
+            gameState['bats'].remove(bat)
 
-    gameState['player'].draw(gameWindow)
+    gameState['bojo'].draw(gameWindow)
+    gameState['gran'].draw(gameWindow)
+    gameState['gran'].walk()
 
     if gameState['lost']:
         lost_label = lost_font.render("You Lost!!", 1, (255, 255, 255))
@@ -71,12 +77,16 @@ def main():
         "powerups": [],
         "healthUps": [],
         "bojo": Boris(300, 630),
-        "gran": Granny()
+        "gran": Granny(),
+        "lives": 5,
+        "vaccine_count": None,
+        "level": 1,
     }
 
     while True:
         clock.tick(FPS)
-        update(gameState)
+
+        # Check game controls
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -89,11 +99,40 @@ def main():
             gameState["bojo"].shootVaccine()
 
 
-#     TODO: Check collisions between bojo's vaccines and bats,
-#     TODO: Ask the bats if they or their coronas have hit granny or bojo
-#     TODO: Tell granny to move
-#     TODO: Tell the bats to move
-#     TODO: sync mouse with bojo
+        # update the game screen
+        update(gameState)
+
+        # decide to spawn some bats, lives, and powerups.
+
+        if not len(gameState["bats"]):
+            gameState['level'] += 1
+            temp = [Bat(random.randrange(50, window_width-100), random.randrange(-1500, -100),flying_bat,viruses[random.randrange(0,3)]) for i in range(gameState['level'] * 5)]
+            gameState["bats"].extend(temp)
+
+        # check for collisions
+
+        for bat in gameState["bats"]:
+            if bat.Bat_or_virus_collison(gameState["bojo"]) and bat.alive:
+                gameState["bojo"].health -= 10
+                bat.die()
+            if bat.Bat_or_virus_collison(gameState["gran"]) and bat.alive:
+                gameState["gran"].health -= 10
+                bat.die()
+
+        gameState["bats"] = gameState["bojo"].vaccinated(gameState["bats"])
+
+
+
+        # sync movement with mouse.
+        pos = pygame.mouse.get_pos()
+        gameState["bojo"].x = min(pos[0],window_width - 60)
+        gameState["bojo"].y = max(pos[1],window_height//2)
+
+        # Move everything
+        gameState['bojo'].move_vaccines()
+        for bat in gameState['bats']:
+            bat.move()
+
 #     TODO: implement main menu with the back story and control info.
 #     TODO: countdown timer; pre return to main menu.
 #     TODO: Add audio elements when getting infected; or killing a bat.

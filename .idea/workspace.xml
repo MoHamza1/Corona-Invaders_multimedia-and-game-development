@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b6a3967-262b-42b9-948e-9798ed0cd445" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/granny/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/granny/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/granny/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/granny/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/granny/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/granny/6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/granny/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/granny_left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/granny_right.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bat.py" beforeDir="false" afterPath="$PROJECT_DIR$/Bat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Boris.py" beforeDir="false" afterPath="$PROJECT_DIR$/Boris.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Granny.py" beforeDir="false" afterPath="$PROJECT_DIR$/Granny.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lifeform.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lifeform.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,13 +34,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1nTbwATaPqVrXdEbZ8v6OHiI3GJ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -81,7 +97,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611417263164</updated>
-      <workItem from="1611417267282" duration="17949000" />
+      <workItem from="1611417267282" duration="18006000" />
+      <workItem from="1611664109474" duration="14097000" />
     </task>
     <servers />
   </component>
@@ -93,39 +110,48 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="744" y="366" width="1071" height="696" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611417466585">
       <screen x="0" y="23" width="2560" height="1362" />
     </state>
     <state x="744" y="366" width="1071" height="696" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1362@0.23.2560.1362" timestamp="1611417466585" />
-    <state width="1246" height="389" key="GridCell.Tab.0.bottom" timestamp="1611435610728">
+    <state width="1246" height="389" key="GridCell.Tab.0.bottom" timestamp="1611685769880">
       <screen x="0" y="23" width="2560" height="1362" />
     </state>
-    <state width="1246" height="389" key="GridCell.Tab.0.bottom/0.23.2560.1362@0.23.2560.1362" timestamp="1611435610728" />
-    <state width="1246" height="389" key="GridCell.Tab.0.center" timestamp="1611435610727">
+    <state width="1246" height="389" key="GridCell.Tab.0.bottom/0.23.2560.1362@0.23.2560.1362" timestamp="1611685769880" />
+    <state width="1246" height="389" key="GridCell.Tab.0.center" timestamp="1611685769879">
       <screen x="0" y="23" width="2560" height="1362" />
     </state>
-    <state width="1246" height="389" key="GridCell.Tab.0.center/0.23.2560.1362@0.23.2560.1362" timestamp="1611435610727" />
-    <state width="1246" height="389" key="GridCell.Tab.0.left" timestamp="1611435610726">
+    <state width="1246" height="389" key="GridCell.Tab.0.center/0.23.2560.1362@0.23.2560.1362" timestamp="1611685769879" />
+    <state width="1246" height="389" key="GridCell.Tab.0.left" timestamp="1611685769879">
       <screen x="0" y="23" width="2560" height="1362" />
     </state>
-    <state width="1246" height="389" key="GridCell.Tab.0.left/0.23.2560.1362@0.23.2560.1362" timestamp="1611435610726" />
-    <state width="1246" height="389" key="GridCell.Tab.0.right" timestamp="1611435610727">
+    <state width="1246" height="389" key="GridCell.Tab.0.left/0.23.2560.1362@0.23.2560.1362" timestamp="1611685769879" />
+    <state width="1246" height="389" key="GridCell.Tab.0.right" timestamp="1611685769879">
       <screen x="0" y="23" width="2560" height="1362" />
     </state>
-    <state width="1246" height="389" key="GridCell.Tab.0.right/0.23.2560.1362@0.23.2560.1362" timestamp="1611435610727" />
+    <state width="1246" height="389" key="GridCell.Tab.0.right/0.23.2560.1362@0.23.2560.1362" timestamp="1611685769879" />
     <state x="781" y="343" key="SettingsEditor" timestamp="1611417444304">
       <screen x="0" y="23" width="2560" height="1362" />
     </state>
     <state x="781" y="343" key="SettingsEditor/0.23.2560.1362@0.23.2560.1362" timestamp="1611417444304" />
+    <state x="1593" y="536" key="com.intellij.ide.util.TipDialog" timestamp="1611664109744">
+      <screen x="0" y="23" width="2560" height="1362" />
+    </state>
+    <state x="1593" y="536" key="com.intellij.ide.util.TipDialog/0.23.2560.1362@0.23.2560.1362" timestamp="1611664109744" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/untitled$main.coverage" NAME="main Coverage Results" MODIFIED="1611417469427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/untitled$main.coverage" NAME="main Coverage Results" MODIFIED="1611685769874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

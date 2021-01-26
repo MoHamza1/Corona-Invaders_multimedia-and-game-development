@@ -21,6 +21,13 @@ class Lifeform:
         self.y += vel if direction == 1 else 0
         self.x += vel if direction == 2 else 0
 
+    def is_off_screen(self):
+            return True if 0 <= self.y <= self.window_height else False
+
+    def status_bar(self, window):
+        pygame.draw.rect(window, (255,0,0), (self.x, self.y + self.icon.get_height() + 10, self.icon.get_width(), 10))
+        pygame.draw.rect(window, (0,255,0), (self.x, self.y + self.icon.get_height() + 10, self.icon.get_width() * (self.health/100), 10))
+
 
 
 
