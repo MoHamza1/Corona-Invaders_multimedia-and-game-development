@@ -20,7 +20,7 @@ class Bat(Lifeform):
     def __init__(self, x, y, virusStrain):
 
         self.animation = [
-    pygame.image.load(os.path.join("Assets/Flying_Bat", f"flying_bat_{x + 1}.png")) for x in range(5)
+    pygame.image.load(f"./Assets/Flying_Bat/flying_bat_{x + 1}.png") for x in range(5)
 ]
         self.frame = 0
         self.animationCounter = 0
@@ -71,7 +71,7 @@ class Bat(Lifeform):
     def die(self):
         if self.alive:
             self.animationCounter = 0
-            self.animation = [pygame.image.load(os.path.join("Assets/Dead_Bat", f"DEAD_{x + 1}.png")) for x in range(5)]
+            self.animation = [pygame.image.load(f"./Assets/Dead_Bat/DEAD_{x + 1}.png") for x in range(5)]
             self.frame = 0
             self.alive = False
 

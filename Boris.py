@@ -15,7 +15,7 @@ from Projectile import *
 class Boris(Lifeform):
 
     def __init__(self, x, y):
-        super().__init__(x, y, pygame.image.load(os.path.join("Assets", "boris.png")))
+        super().__init__(x, y, pygame.image.load("./Assets/boris.png"))
         self.vaccinesShot = []
         self.vaccine_count = 100
         self.canShoot = 0
@@ -24,9 +24,12 @@ class Boris(Lifeform):
         # Create instance of Projectile with vaccine icon and vel -5 to point upwards.
 
         if not self.canShoot and self.vaccine_count > 0:
+            from pygame import mixer
+            shoot_vaccine = mixer.Sound('./Assets/sounds/shoot.wav')
+            shoot_vaccine.play()
             self.vaccine_count -=1
             self.vaccinesShot.append(
-                Projectile(self.x, self.y, pygame.image.load(os.path.join("Assets", "vaccine.png")), -5))
+                Projectile(self.x, self.y, pygame.image.load("./Assets/vaccine.png"), -5))
 
     def draw(self, gamewindow):
         super().draw(gamewindow)

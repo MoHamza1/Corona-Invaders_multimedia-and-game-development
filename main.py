@@ -3,27 +3,34 @@ from Bat import *
 from Granny import *
 from Projectile import *
 import pygame
-import os
 import random
-
+from pygame import mixer
+pygame.init()
 FPS = 60
 clock = pygame.time.Clock()
 pygame.font.init()
 window_width, window_height = 750, 750
 gameWindow = pygame.display.set_mode((window_width, window_height))
-background = pygame.transform.scale(pygame.image.load(os.path.join("Assets", "background.png")),
+background = pygame.transform.scale(pygame.image.load("./Assets/bg.png"),
+                                    (window_width, window_height))
+menu_background = pygame.transform.scale(pygame.image.load("./Assets/menu_bg.png"),
                                     (window_width, window_height))
 pygame.mouse.set_visible(False)
 
 ############################# ASSETS #############################
-life = pygame.image.load(os.path.join("Assets", "life.png"))
-crate = pygame.image.load(os.path.join("Assets", "crate.png"))
-vaccine = pygame.image.load(os.path.join("Assets", "vaccine.png"))
+life = pygame.image.load("./Assets/life.png")
+crate = pygame.image.load("./Assets/crate.png")
+vaccine = pygame.image.load("./Assets/vaccine.png")
 viruses = [
-    pygame.image.load(os.path.join("Assets", f"virus_{x}.png")) for x in ['blue', 'green', 'red']
+    pygame.image.load(f"./Assets/virus_{x}.png") for x in ['blue', 'green', 'red']
 ]
 main_font = pygame.font.SysFont("comicsans", 50)
 lost_font = pygame.font.SysFont("comicsans", 60)
+
+collect_crate = mixer.Sound('./Assets/sounds/crate.wav')
+collect_life = mixer.Sound('./Assets/sounds/health.wav')
+bat_die = mixer.Sound('./Assets/sounds/deadbat.wav')
+shoot_vaccine = mixer.Sound('./Assets/sounds/shoot.wav')
 
 
 ###################################################################
@@ -56,14 +63,12 @@ def update(gameState):
         bat.draw(gameWindow)
         if bat.despawn() or (not bat.alive and bat.frame == 4):
             gameState['bats'].remove(bat)
+            bat_die.play()
 
     gameState['bojo'].draw(gameWindow)
     gameState['gran'].draw(gameWindow)
 
     if gameState['lost']:
-        # lost_label = lost_font.render(f"You killed {gameState['kills']} bats!", 1, (255, 255, 255))
-        # gameWindow.blit(lost_label, (window_width / 2 - lost_label.get_width() / 2, 350))
-
         high_score = lost_font.render(f"You killed {gameState['kills']} bats!", 1, (255, 255, 255))
         gameWindow.blit(high_score, (window_width / 2 - high_score.get_width() / 2, 350))
         game_over = lost_font.render(f"Game Over!", 1, (255, 255, 255))
@@ -86,7 +91,8 @@ def main(difficulty):
         "kills": 0
     }
     post_game_timer = 0
-
+    mixer.music.load("./Assets/sounds/bojo.mp3")
+    mixer.music.play()
     while True:
         clock.tick(FPS)
 
@@ -101,6 +107,7 @@ def main(difficulty):
             keys = pygame.key.get_pressed()
             if keys[pygame.K_SPACE]:
                 gameState["bojo"].shootVaccine()
+
 
             # update the game screen
 
@@ -129,22 +136,27 @@ def main(difficulty):
                     if status == 2:
                         gameState["kills"] += 1
                         bat.die()
+                        bat_die.play()
                 status = bat.Bat_or_virus_collison(gameState["gran"])
                 if status and bat.alive:
                     gameState["gran"].health -= 10
                     if status == 2:
                         bat.die()
+                        bat_die.play()
 
             for healthup in gameState["healthUps"]:
                 if healthup.collided(gameState["bojo"]):
+                    collect_life.play()
                     gameState["bojo"].health = min(100, gameState["bojo"].health + 25)
                     gameState["healthUps"].remove(healthup)
                 if healthup.collided(gameState["gran"]):
+                    collect_life.play()
                     gameState["gran"].health = 100
                     gameState["healthUps"].remove(healthup)
 
             for powerup in gameState["powerups"]:
                 if powerup.collided(gameState["bojo"]):
+                    collect_crate.play()
                     gameState["bojo"].vaccine_count += 50
                     gameState["powerups"].remove(powerup)
 
@@ -193,19 +205,19 @@ def pregame_menu():
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                break
+                quit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 main(Difficulty + 1)
             if event.type == pygame.KEYUP:
                 Difficulty = (Difficulty % 10) + 1
 
-        gameWindow.blit(background, (0, 0))
+        gameWindow.blit(menu_background, (0, 0))
         title_label = big_font.render("Press the mouse to begin...", 1, (255, 255, 255))
         difficulty_control = little_font.render("Press any key to control difficulty", 1,
                                                       (255, 255, 255))
         dificulty_label = little_font.render((f"Difficulty: {Difficulty}"), 1, (255, 255, 255))
 
-        instructions_label = big_font.render("Instructions:.", 1, (255, 0, 255))
+        instructions_label = big_font.render("Instructions:.", 1, (0, 0, 255))
         control_label_1 = little_font.render(("1. Move Boris with your mouse, and shoot with Space Bar"), 1,
                                                    (255, 0, 0))
         control_label_2 = little_font.render(("2. Collect ammo and health by travelling to them"), 1, (255, 0, 0))

@@ -14,7 +14,7 @@ class Granny(Lifeform):
     def __init__(self, window_width=750, window_height=750):
 
         self.right_walk = [
-            pygame.image.load(os.path.join("Assets/granny", f"{x + 1}.png")) for x in range(7)
+            pygame.image.load(f"Assets/granny/{x + 1}.png") for x in range(7)
         ]
 
         self.left_walk = [pygame.transform.flip(x, True, False) for x in self.right_walk]
