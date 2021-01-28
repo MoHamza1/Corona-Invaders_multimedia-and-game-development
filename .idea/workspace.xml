@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b6a3967-262b-42b9-948e-9798ed0cd445" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/boris copy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/menu_bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/sounds/_readme_and_license.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/sounds/bojo.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/sounds/crate.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/sounds/deadbat.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/sounds/health.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/sounds/shoot.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bat.py" beforeDir="false" afterPath="$PROJECT_DIR$/Bat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boris.py" beforeDir="false" afterPath="$PROJECT_DIR$/Boris.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Granny.py" beforeDir="false" afterPath="$PROJECT_DIR$/Granny.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +87,8 @@
       <option name="presentableId" value="Default" />
       <updated>1611417263164</updated>
       <workItem from="1611417267282" duration="18006000" />
-      <workItem from="1611664109474" duration="26090000" />
+      <workItem from="1611664109474" duration="26321000" />
+      <workItem from="1611833302803" duration="127000" />
     </task>
     <servers />
   </component>
@@ -127,32 +116,32 @@
       <screen x="0" y="23" width="2560" height="1362" />
     </state>
     <state x="744" y="366" width="1071" height="696" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1362@0.23.2560.1362" timestamp="1611417466585" />
-    <state width="1246" height="389" key="GridCell.Tab.0.bottom" timestamp="1611753288313">
+    <state width="1246" height="389" key="GridCell.Tab.0.bottom" timestamp="1611753483656">
       <screen x="0" y="23" width="2560" height="1362" />
     </state>
-    <state width="1246" height="389" key="GridCell.Tab.0.bottom/0.23.2560.1362@0.23.2560.1362" timestamp="1611753288313" />
-    <state width="1246" height="389" key="GridCell.Tab.0.center" timestamp="1611753288313">
+    <state width="1246" height="389" key="GridCell.Tab.0.bottom/0.23.2560.1362@0.23.2560.1362" timestamp="1611753483656" />
+    <state width="1246" height="389" key="GridCell.Tab.0.center" timestamp="1611753483655">
       <screen x="0" y="23" width="2560" height="1362" />
     </state>
-    <state width="1246" height="389" key="GridCell.Tab.0.center/0.23.2560.1362@0.23.2560.1362" timestamp="1611753288313" />
-    <state width="1246" height="389" key="GridCell.Tab.0.left" timestamp="1611753288312">
+    <state width="1246" height="389" key="GridCell.Tab.0.center/0.23.2560.1362@0.23.2560.1362" timestamp="1611753483655" />
+    <state width="1246" height="389" key="GridCell.Tab.0.left" timestamp="1611753483655">
       <screen x="0" y="23" width="2560" height="1362" />
     </state>
-    <state width="1246" height="389" key="GridCell.Tab.0.left/0.23.2560.1362@0.23.2560.1362" timestamp="1611753288312" />
-    <state width="1246" height="389" key="GridCell.Tab.0.right" timestamp="1611753288313">
+    <state width="1246" height="389" key="GridCell.Tab.0.left/0.23.2560.1362@0.23.2560.1362" timestamp="1611753483655" />
+    <state width="1246" height="389" key="GridCell.Tab.0.right" timestamp="1611753483656">
       <screen x="0" y="23" width="2560" height="1362" />
     </state>
-    <state width="1246" height="389" key="GridCell.Tab.0.right/0.23.2560.1362@0.23.2560.1362" timestamp="1611753288313" />
+    <state width="1246" height="389" key="GridCell.Tab.0.right/0.23.2560.1362@0.23.2560.1362" timestamp="1611753483656" />
     <state x="781" y="343" key="SettingsEditor" timestamp="1611417444304">
       <screen x="0" y="23" width="2560" height="1362" />
     </state>
     <state x="781" y="343" key="SettingsEditor/0.23.2560.1362@0.23.2560.1362" timestamp="1611417444304" />
-    <state x="1593" y="536" key="com.intellij.ide.util.TipDialog" timestamp="1611664109744">
+    <state x="1593" y="536" key="com.intellij.ide.util.TipDialog" timestamp="1611833304496">
       <screen x="0" y="23" width="2560" height="1362" />
     </state>
-    <state x="1593" y="536" key="com.intellij.ide.util.TipDialog/0.23.2560.1362@0.23.2560.1362" timestamp="1611664109744" />
+    <state x="1593" y="536" key="com.intellij.ide.util.TipDialog/0.23.2560.1362@0.23.2560.1362" timestamp="1611833304496" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/untitled$main.coverage" NAME="main Coverage Results" MODIFIED="1611753288301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/untitled$main.coverage" NAME="main Coverage Results" MODIFIED="1611833359377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -9,13 +9,16 @@ pygame.init()
 FPS = 60
 clock = pygame.time.Clock()
 pygame.font.init()
-window_width, window_height = 750, 750
+window_width = 750
+window_height = 750
 gameWindow = pygame.display.set_mode((window_width, window_height))
 background = pygame.transform.scale(pygame.image.load("./Assets/bg.png"),
                                     (window_width, window_height))
 menu_background = pygame.transform.scale(pygame.image.load("./Assets/menu_bg.png"),
                                     (window_width, window_height))
 pygame.mouse.set_visible(False)
+pygame.display.set_caption("Corona Invaders")
+pygame.display.set_icon(pygame.image.load("./Assets/boris.png"))
 
 ############################# ASSETS #############################
 life = pygame.image.load("./Assets/life.png")
@@ -244,8 +247,6 @@ def pregame_menu():
 
     pygame.quit()
 
-
-#     TODO: Add audio elements when getting infected; or killing a bat.
 
 
 pregame_menu()
