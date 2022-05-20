@@ -2,7 +2,9 @@
 
 ### Sample from the game:
 <img width="372" alt="Screenshot 2022-05-20 at 14 01 39" src="https://user-images.githubusercontent.com/44465136/169537801-0947e271-e00c-470e-91be-208d28700acd.png">
-<img width="372" alt="screen recording gif" src="[https://user-images.githubusercontent.com/44465136/169537801-0947e271-e00c-470e-91be-208d28700acd.png](https://user-images.githubusercontent.com/44465136/169538161-5b8c4f61-c3c1-4345-889c-14a2864c6c52.gif)">
+![](https://user-images.githubusercontent.com/44465136/169538941-c7ed0c0a-fbff-44b5-95d5-8df32d59fb0d.gif)
+
+
 ### Main game rules / logics to control game progression, difficulty and end game conditions:
 
 <img width="435" alt="Screenshot 2022-05-20 at 14 07 02" src="https://user-images.githubusercontent.com/44465136/169537679-7d13834c-42e7-407f-87b8-b9a05fbbf820.png">
