@@ -64,8 +64,6 @@ class Bat(Lifeform):
         return 2 if self.mask.overlap(target.mask, ((target.x - self.x), (target.y - self.y))) else 0
 
     def despawn(self):
-        if self.y > 750:
-            print("pop!")
         return True if self.y > 750 else False
 
     def die(self):
