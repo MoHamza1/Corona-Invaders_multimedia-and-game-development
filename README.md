@@ -2,7 +2,7 @@
 
 ### Sample from the game:
 <img width="372" alt="Screenshot 2022-05-20 at 14 01 39" src="https://user-images.githubusercontent.com/44465136/169537801-0947e271-e00c-470e-91be-208d28700acd.png">
-![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/44465136/169538161-5b8c4f61-c3c1-4345-889c-14a2864c6c52.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/44465136/169538161-5b8c4f61-c3c1-4345-889c-14a2864c6c52.gif)
 
 ### Main game rules / logics to control game progression, difficulty and end game conditions:
 
